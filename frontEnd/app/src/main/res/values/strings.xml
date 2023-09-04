@@ -4,4 +4,8 @@
 This is an initiative by Volunteering Victoria to strengthen your volunteering.
 </string>
     <string name="page_one_title">Volpoll</string>
+    <string name="completed_gif_description">A GIF indicating task completion</string>
+    <string name="completion_text_0">Well done!</string>
+    <string name="completion_text_1">Your survey is complete</string>
+
 </resources>
