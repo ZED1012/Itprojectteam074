@@ -13,7 +13,7 @@
         android:id="@+id/page1_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/red"
+        android:background="@color/VolPoll_Red"
         >
 
     <ImageView

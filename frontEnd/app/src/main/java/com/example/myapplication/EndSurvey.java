@@ -13,6 +13,6 @@ public class EndSurvey extends AppCompatActivity {
         setContentView(R.layout.end_survey);
 
         ImageView imageView = findViewById(R.id.completed_gif);
-        Glide.with(this).load(R.drawable.completed).into(imageView);
+        Glide.with(this).load(R.drawable.completed).into(imageView);//gif
     }
 }
