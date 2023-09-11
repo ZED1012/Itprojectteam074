@@ -61,6 +61,7 @@
         android:minWidth="25sp"
         android:minHeight="25sp"
         android:text="Take Survey!"
+        android:backgroundTint="@color/VolPoll_Red"
 
         android:textSize="25sp" />
 

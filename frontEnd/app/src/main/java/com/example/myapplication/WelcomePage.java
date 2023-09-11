@@ -52,7 +52,7 @@ public class WelcomePage extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
 
                 if (item.getItemId() == R.id.volunteer) {
-                    volunteerPage();
+                    volunteerPage(view);
                     return true;//return true
                 }
                 if (item.getItemId() == R.id.leader) {
@@ -70,15 +70,15 @@ public class WelcomePage extends AppCompatActivity {
         popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
             @Override
             public void onDismiss(PopupMenu menu) {
-                Toast.makeText(view.getContext(), "close", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(view.getContext(), "close", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
     //跳转volunteer的page
-    private void volunteerPage() {
-
+    private void volunteerPage(final View view) {
+        Toast.makeText(view.getContext(), "Volunteer Page Open", Toast.LENGTH_SHORT).show();
     }
 
     //跳转leader的page
