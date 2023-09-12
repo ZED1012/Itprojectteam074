@@ -23,6 +23,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_below="@id/logo"
+        android:layout_marginTop="30dp"
         />
 
 
@@ -151,7 +152,8 @@
         android:layout_alignParentEnd="true"
         android:text="Get Started >"
         android:textSize="22sp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/leader"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@drawable/button_selector"
     />
 
