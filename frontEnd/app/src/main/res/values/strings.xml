@@ -7,6 +7,8 @@ This is an initiative by Volunteering Victoria to strengthen your volunteering.
     <string name="completed_gif_description">A GIF indicating task completion</string>
     <string name="completion_text_0">Well done!</string>
     <string name="completion_text_1">Your survey is complete</string>
+    <string name="completion_text_2">Download Report</string>
+    <string name="completion_text_3">Learn more about us</string>
     <string name="title_activity_main2">MainActivity2</string>
 
 </resources>
