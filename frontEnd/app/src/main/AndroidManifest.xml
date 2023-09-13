@@ -23,6 +23,9 @@
         <activity
             android:name=".personalDetail"
             android:exported="false" />
+        <activity
+            android:name=".contactUs"
+            android:exported="false" />
 
         <!--修改名字-->
         <activity

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -79,6 +80,7 @@ public class WelcomePage extends AppCompatActivity {
     //跳转volunteer的page
     private void volunteerPage(final View view) {
         Toast.makeText(view.getContext(), "Volunteer Page Open", Toast.LENGTH_SHORT).show();
+
     }
 
     //跳转leader的page
@@ -88,6 +90,8 @@ public class WelcomePage extends AppCompatActivity {
 
     //跳转contact us page
     private void contactUsPage() {
-
+        Intent intent = new Intent();
+        intent.setClass(WelcomePage.this, contactUs.class);
+        startActivity(intent);
     }
 }
