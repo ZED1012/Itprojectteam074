@@ -91,10 +91,12 @@
         android:layout_marginTop="36dp"
         android:text="@string/completion_text_3"
         android:textColor="@color/VolPoll_Red"
-        android:textDecorationLine="underline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button"
+
+        />
+    <!--android:textDecorationLine="underline"-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

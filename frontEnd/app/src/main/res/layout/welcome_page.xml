@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:gravity="center|top"
     android:orientation="vertical"
+
     android:scaleType="center">
+
     <!--android:background="@mipmap/welcomepage_background"-->
 
 

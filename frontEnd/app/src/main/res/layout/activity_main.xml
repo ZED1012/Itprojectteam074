@@ -7,62 +7,7 @@
     android:orientation="vertical">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/page1_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/VolPoll_Red">
 
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:src="@drawable/logo1"
-
-            />
-
-        <Button
-            android:id="@+id/page1_menu_button"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:onClick="toPopupMenu"
-            android:layout_gravity="right"
-            android:icon="@drawable/baseline_menu_24"
-            app:showAsAction="always"
-            />
-
-    </androidx.appcompat.widget.Toolbar>
-
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/red_logo"
-
-
-        />
-
-    <TextView
-        android:id="@+id/page1_text"
-        android:layout_width="300dp"
-        android:layout_height="450dp"
-        android:gravity="center"
-        android:text="@string/page_one"
-        android:textSize="30sp"
-        android:textStyle="italic|bold"
-
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|bottom"
-        android:minWidth="25sp"
-        android:minHeight="25sp"
-
-        android:text="Take Survey!"
-
-        android:textSize="25sp" />
 
 
 </LinearLayout>
