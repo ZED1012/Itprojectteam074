@@ -21,10 +21,10 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.MyApplication" />
         <activity
-            android:name=".personalDetail"
+            android:name=".PersonalDetail"
             android:exported="false" />
         <activity
-            android:name=".contactUs"
+            android:name=".ContactUs"
             android:exported="false" />
 
         <!--修改名字-->

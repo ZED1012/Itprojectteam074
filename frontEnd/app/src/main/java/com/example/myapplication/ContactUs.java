@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class contactUs extends AppCompatActivity{
+public class ContactUs extends AppCompatActivity{
 
     private EditText contactName, contactEmail, contactSubject, contactMessage;
 
