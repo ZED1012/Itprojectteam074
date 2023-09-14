@@ -5,4 +5,5 @@
     <color name="red">#FFFF0000</color>
     <color name="VolPoll_Red">#CC2D43</color>
     <color name="VolPoll_Blue">#2E476B</color>
+    <color name="VolPoll_Grey">#999999</color>
 </resources>
