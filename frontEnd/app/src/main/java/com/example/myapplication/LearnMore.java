@@ -8,16 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
-
-
-public class EndSurvey extends AppCompatActivity {
-
+public class LearnMore extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.end_survey);
+        setContentView(R.layout.learn_more);
 
-        ImageView imageView = findViewById(R.id.completed_gif);
-        Glide.with(this).load(R.drawable.completed).into(imageView);//gif
+
     }
 }
