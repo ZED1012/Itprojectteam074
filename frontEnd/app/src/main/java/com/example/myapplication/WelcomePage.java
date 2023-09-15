@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -91,7 +90,7 @@ public class WelcomePage extends AppCompatActivity {
     //跳转contact us page
     private void contactUsPage() {
         Intent intent = new Intent();
-        intent.setClass(WelcomePage.this, contactUs.class);
+        intent.setClass(WelcomePage.this, ContactUs.class);
         startActivity(intent);
     }
 }

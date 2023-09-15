@@ -21,16 +21,23 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.MyApplication" />
         <activity
-            android:name=".personalDetail"
+            android:name=".PersonalDetail"
             android:exported="false" />
         <activity
-            android:name=".contactUs"
+            android:name=".ContactUs"
+            android:exported="false" />
+        <activity
+            android:name=".ForVolunteer"
+            android:exported="false" />
+        <activity
+            android:name=".ForLeader"
             android:exported="false" />
 
-        <!--修改名字-->
+
+        <!-- 修改名字 -->
         <activity
             android:name=".WelcomePage"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- need to add toolbar on the top -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="26dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:text="For Volunteers"
+            android:textColor="@color/VolPoll_Blue"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/vol1"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Why VolPoll?"
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Grey" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Become more proactive where you volunteer!"
+            android:textSize="24sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Being proactive during your volunteering is key. Your efforts demonstrate your commitment to your role VolPoll empowers you to provide effective feedback to your organisations’s leader."
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:layout_marginBottom="20dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/vol2"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ensure long term success"
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Grey" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Futureproof your organization"
+            android:textSize="24sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="As a volunteer at an organization – you care about what your volunteer group does in your community and want it to exist for the foreseeable future. Organisations that effectively involve volunteers in relation to safety sustainability and satisfaction have a greater chance of long term success. Providing leaders information about your experience can help them make any changes necessary to ensure the organisations long term success."
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:layout_marginBottom="20dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/vol3"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your entitlements"
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Grey" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find out about your rights"
+            android:textSize="24sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Understanding your rights and entitlements as a volunteer can sometimes be difficult. Your safety is priority. VolPoll keeps you updated and informed about your rights and obligations."
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Blue"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vol4"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon1"
+            android:layout_gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Your report"
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Your survey generates a report outlining key areas for you as a volunteer."
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Grey" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon2"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sustainability"
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Feel confident in your future as a volunteer and that your hours are not being wasted."
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Grey" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon3"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Safety"
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Ensure you are volunteering in a healthy and safe environment and covered from a legal and insurance perspective."
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Grey" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon4"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Satisfaction"
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Blue"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Ensure your organisation is supporting you and acknowledging the work you do."
+            android:textSize="18sp"
+            android:textColor="@color/VolPoll_Grey" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="© 2023 VolPoll. All Rights Reserved. Volunteering Victoria is using data generated by VolPoll to strengthen the volunteering sector. "
+            android:textSize="14sp"
+            android:paddingTop="40dp"
+            />
+
+    </LinearLayout>
+</ScrollView>
