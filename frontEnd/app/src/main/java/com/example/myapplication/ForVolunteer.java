@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ForVolunteer extends AppCompatActivity {
+public class ForVolunteer extends AllPageToolBar {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

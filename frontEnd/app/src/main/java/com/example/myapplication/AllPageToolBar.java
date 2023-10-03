@@ -1,54 +1,70 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class WelcomePage extends AppCompatActivity {
 
-    @Override
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
+
+public class AllPageToolBar extends AppCompatActivity {
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_page);
-
-        View v = findViewById(R.id.page1_menu_button); //需要设透明的控件的id
-        v.getBackground().setAlpha(0);       //0~255透明度值
+        //setContentView(R.layout.tool_bar);
 
 
-        TextView pageOneText = findViewById(R.id.page1_text);
-        Toolbar pageOneToolbar = findViewById(R.id.page1_toolbar);
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        onPostOnCreate();
+    }
 
-        //popup menu部分
-        final ImageButton button = (ImageButton) findViewById(R.id.page1_menu_button);
+    public final void onPostOnCreate()//find同一个控件
+    {
+        InitSetting();
+        InitEvent();
+    }
+
+    /**
+     * 初始化参数
+     */
+
+    protected void InitSetting(){
+
+        //绑定两个groupRadio
+        final ImageButton button = (ImageButton) findViewById(R.id.all_page_menu_button);
+
+        //停止按钮
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.all_page_toolbar);
+    }
+
+    /**
+     * 初始化事件
+     */
+    protected void InitEvent(){
+        final ImageButton button = (ImageButton) findViewById(R.id.all_page_menu_button);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.all_page_toolbar);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPopupMenu(button);
             }
         });
-
-        //start survey部分
-        final Button startSurvey = (Button) findViewById(R.id.page1_start);
-        startSurvey.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent();
-                intent.setClass(WelcomePage.this, PersonalDetail.class);
-                startActivity(intent);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            public void onClick(View w){
+                finish();
             }
         });
     }
-
-    //弹出menu
-    private void showPopupMenu(final View view) {
+    protected void showPopupMenu(final View view) {
         PopupMenu popupMenu = new PopupMenu(this, view, 5);//这里可以添加gravity在最后,right的int为5
         popupMenu.inflate(R.menu.menu_popup);//显示menu
         popupMenu.show();//显示菜单
@@ -83,24 +99,28 @@ public class WelcomePage extends AppCompatActivity {
     }
 
     //跳转volunteer的page
-    private void volunteerPage(final View view) {
+    protected void volunteerPage(final View view) {
         Intent intent = new Intent();
-        intent.setClass(WelcomePage.this, ForVolunteer.class);
+        intent.setClass(AllPageToolBar.this, ForVolunteer.class);
         startActivity(intent);
 
     }
 
     //跳转leader的page
-    private void leaderPage() {
+    protected void leaderPage() {
         Intent intent = new Intent();
-        intent.setClass(WelcomePage.this, ForLeader.class);
+        intent.setClass(AllPageToolBar.this, ForLeader.class);
         startActivity(intent);
     }
 
     //跳转contact us page
-    private void contactUsPage() {
+    protected void contactUsPage() {
         Intent intent = new Intent();
-        intent.setClass(WelcomePage.this, ContactUs.class);
+        intent.setClass(AllPageToolBar.this, ContactUs.class);
         startActivity(intent);
     }
+
 }
+
+
+
