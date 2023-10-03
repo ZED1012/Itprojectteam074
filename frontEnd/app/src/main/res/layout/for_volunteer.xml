@@ -14,6 +14,9 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:padding="26dp">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tool_bar"/>
 
 
         <TextView
