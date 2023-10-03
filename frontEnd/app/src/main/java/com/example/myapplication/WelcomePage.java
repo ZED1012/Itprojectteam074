@@ -36,8 +36,6 @@ public class WelcomePage extends AppCompatActivity {
         });
 
 
-
-
     }
 
     //弹出按钮框
@@ -78,13 +76,17 @@ public class WelcomePage extends AppCompatActivity {
 
     //跳转volunteer的page
     private void volunteerPage(final View view) {
-        Toast.makeText(view.getContext(), "Volunteer Page Open", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent();
+        intent.setClass(WelcomePage.this, ForVolunteer.class);
+        startActivity(intent);
 
     }
 
     //跳转leader的page
     private void leaderPage() {
-
+        Intent intent = new Intent();
+        intent.setClass(WelcomePage.this, ForLeader.class);
+        startActivity(intent);
     }
 
     //跳转contact us page
