@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:scaleType="center">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/all_page_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        android:background="@color/VolPoll_Red">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/logo1"
+            />
+
+        <ImageButton
+            android:id="@+id/all_page_menu_button"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:src="@drawable/baseline_menu_24" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+</LinearLayout>
