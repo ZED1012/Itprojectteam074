@@ -7,8 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class PersonalDetail extends AppCompatActivity {
@@ -96,7 +103,45 @@ public class PersonalDetail extends AppCompatActivity {
 
         editor.apply();
     }
+    //测试传输数据给后端
+     public void goToSurveyActivity(View view){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    String json = "";//直接copy后端格式
+                    OkHttpClient client = new OkHttpClient();
+                    /*1.后端电脑ip地址（服务器地址)+:+端口号
+                    * 2.用post方法发送信息
+                    * */
+                    Request request = new Request.Builder()
+                            .url("http://")
+                            .post(RequestBody.create(MediaType.parse("application/json"),json))
+                            .build();//创建http请求
+                    Response response = client.newCall(request).execute();//执行发送的指令
+                    //操作主线程
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(PersonalDetail.this,"connect success",Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-     public void goToSurveyActivity(View view){}
+
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                    //因为子线程不能直接操作ui，所以添加下面的runOnUIThread
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(PersonalDetail.this,"connect fail",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+            }
+        }).start();
+     }
 
 }
