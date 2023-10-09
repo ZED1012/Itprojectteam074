@@ -11,17 +11,21 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
 public class PersonalDetail extends AppCompatActivity {
 
     private EditText editTextFirstName, editTextLastName, editTextEmail, editTextPostCode, editTextGroup;
     private boolean isGroup, isClub, isOrganisation, isLeader;
+    private final OkHttpClient client = new OkHttpClient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,6 @@ public class PersonalDetail extends AppCompatActivity {
         editTextGroup = findViewById(R.id.editTextGroup);
 
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -56,16 +59,14 @@ public class PersonalDetail extends AppCompatActivity {
         });
 
         RadioGroup leader = findViewById(R.id.leader);
-        //RadioButton lead = findViewById(R.id.lead);
         leader.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.lead){
+                if (checkedId == R.id.lead) {
                     isLeader = true;
                 } else {
                     isLeader = false;
                 }
             }
-
         });
 
         Button startButton = findViewById(R.id.startSurvey);
@@ -73,21 +74,18 @@ public class PersonalDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 personalDetail(v);
-
-                // to survey page
-                goToSurveyActivity(v);
             }
         });
     }
 
-    //personal detail
-    public void personalDetail(View view){
+    public void personalDetail(View view) {
         String firstName = editTextFirstName.getText().toString();
         String lastName = editTextLastName.getText().toString();
         String email = editTextEmail.getText().toString();
         String postCode = editTextPostCode.getText().toString();
         String groupName = editTextGroup.getText().toString();
 
+        // Save the details in SharedPreferences
         SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("first_name", firstName);
@@ -95,53 +93,73 @@ public class PersonalDetail extends AppCompatActivity {
         editor.putString("email", email);
         editor.putString("post_code", postCode);
         editor.putString("group_name", groupName);
-
         editor.putBoolean("group", isGroup);
         editor.putBoolean("club", isClub);
         editor.putBoolean("organisation", isOrganisation);
         editor.putBoolean("leader", isLeader);
-
         editor.apply();
+
+        // Preparing the JSON payload
+        String jsonPayload = String.format(
+                "{" +
+                        "\"_group\": \"%s\"," +
+                        "\"agree\": true," +
+                        "\"email\": \"%s\"," +
+                        "\"first_name\": \"%s\"," +
+                        "\"group_type\": \"%s\"," +
+                        "\"last_name\": \"%s\"," +
+                        "\"peak\": true," +
+                        "\"peak_details\": \"\"," +
+                        "\"position\": \"%s\"," +
+                        "\"postcode\": \"%s\"," +
+                        "\"role_id\": 0" +
+                        "}",
+                groupName, email, firstName, getGroupType(), lastName, isLeader ? "leader" : "member", postCode
+        );
+
+        postToBackend("http://hf2019.natapp1.cc/auth/signup", jsonPayload);
     }
-    //测试传输数据给后端
-     public void goToSurveyActivity(View view){
-        new Thread(new Runnable() {
+
+    private String getGroupType() {
+        if (isGroup) return "group";
+        if (isClub) return "club";
+        if (isOrganisation) return "organisation";
+        return "unknown";
+    }
+
+    private void postToBackend(String url, String jsonPayload) {
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonPayload);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
             @Override
-            public void run() {
-                try{
-                    String json = "";//直接copy后端格式
-                    OkHttpClient client = new OkHttpClient();
-                    /*1.后端电脑ip地址（服务器地址)+:+端口号
-                    * 2.用post方法发送信息
-                    * */
-                    Request request = new Request.Builder()
-                            .url("http://")
-                            .post(RequestBody.create(MediaType.parse("application/json"),json))
-                            .build();//创建http请求
-                    Response response = client.newCall(request).execute();//执行发送的指令
-                    //操作主线程
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(PersonalDetail.this,"connect success",Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
 
-
-
-                }catch(Exception e){
-                    e.printStackTrace();
-                    //因为子线程不能直接操作ui，所以添加下面的runOnUIThread
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(PersonalDetail.this,"connect fail",Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(PersonalDetail.this, "Network error", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
-        }).start();
-     }
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(PersonalDetail.this, "Data sent successfully", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
 }
