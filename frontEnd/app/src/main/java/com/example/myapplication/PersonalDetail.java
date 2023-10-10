@@ -121,9 +121,15 @@ public class PersonalDetail extends AppCompatActivity {
     }
 
     private String getGroupType() {
-        if (isGroup) return "group";
-        if (isClub) return "club";
-        if (isOrganisation) return "organisation";
+        if (isGroup) {
+            return "group";
+        }
+        if (isClub) {
+            return "club";
+        }
+        if (isOrganisation) {
+            return "organisation";
+        }
         return "unknown";
     }
 
