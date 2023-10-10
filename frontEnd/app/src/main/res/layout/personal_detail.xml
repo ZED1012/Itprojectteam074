@@ -164,7 +164,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Is your group associated with a peak or parent body association such as Netball Australia, Rotary International, or Parks Victoria who might take care of some of your insurance or governance?"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                />
 
         </RadioGroup>
 
