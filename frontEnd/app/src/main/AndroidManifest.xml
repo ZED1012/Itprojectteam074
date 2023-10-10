@@ -36,9 +36,10 @@
             android:exported="false" />
 
 
+
         <!-- 修改名字 -->
         <activity
-            android:name=".WelcomePage"
+            android:name=".SurveyToolbar"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.myapplication.SurveyPopupPage" />
     </application>
 
 </manifest>
