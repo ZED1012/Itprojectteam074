@@ -138,7 +138,7 @@ public class PersonalDetail extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
-                // You may want to show an error message using Toast or any other mechanism
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -152,8 +152,7 @@ public class PersonalDetail extends AppCompatActivity {
                 if (!response.isSuccessful()) {
                     throw new IOException("Unexpected code " + response);
                 }
-                // Handle the response
-                // For example, you can display a success message using Toast
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
