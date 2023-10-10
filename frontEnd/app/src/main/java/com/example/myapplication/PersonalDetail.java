@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,31 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
+class Person {
+    String firstName;
+    String lastName;
+    String email;
+    String postCode;
+    String group;
+    boolean isGroup;
+    boolean isClub;
+    boolean isOrganisation;
+    boolean isLeader;
+
+    public Person(String FirstName, String LastName, String Email, String PostCode, String Group,
+                  boolean isGroup, boolean isClub, boolean isOrganisation, boolean isLeader) {
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.email = Email;
+        this.postCode = PostCode;
+        this.group = Group;
+        this.isGroup = isGroup;
+        this.isClub = isClub;
+        this.isOrganisation = isOrganisation;
+        this.isLeader = isLeader;
+    }
+}
 
 public class PersonalDetail extends AppCompatActivity {
 
@@ -74,6 +100,9 @@ public class PersonalDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 personalDetail(v);
+                Intent intent = new Intent();
+                intent.setClass(PersonalDetail.this, SurveyToolbar.class);
+                startActivity(intent);
             }
         });
     }
@@ -98,6 +127,22 @@ public class PersonalDetail extends AppCompatActivity {
         editor.putBoolean("organisation", isOrganisation);
         editor.putBoolean("leader", isLeader);
         editor.apply();
+        Person client = new Person(firstName,lastName,email,postCode,groupName,isGroup,isClub,isOrganisation,isLeader);
+        String[] data = new String[5];
+        data[0] = firstName;
+        data[1] = lastName;
+        data[2] = email;
+        data[3] = groupName;
+        data[4] = postCode;
+        String group = getGroupType();
+        String role = new String();
+        if(isLeader){
+            role = "leader";
+        }else{
+            role = "member";
+        }
+
+
 
         // Preparing the JSON payload
         String jsonPayload = String.format(
@@ -118,6 +163,13 @@ public class PersonalDetail extends AppCompatActivity {
         );
 
         postToBackend("http://hf2019.natapp1.cc/auth/signup", jsonPayload);
+
+        //transform data
+        Intent intent=new Intent(PersonalDetail.this, SurveyPopupPage.class);
+        intent.putExtra("basicDetail", data);
+        intent.putExtra("group", group);
+        intent.putExtra("isLeader", role);
+        startActivity(intent);
     }
 
     private String getGroupType() {
@@ -167,5 +219,6 @@ public class PersonalDetail extends AppCompatActivity {
                 });
             }
         });
+
     }
 }

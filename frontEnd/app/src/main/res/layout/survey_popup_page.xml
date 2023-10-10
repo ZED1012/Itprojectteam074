@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tool_bar" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="26dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="Edit Details"/>
+        <EditText
+            android:id="@+id/FirstName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="First Name*"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/intro"/>
+        <EditText
+            android:id="@+id/LastName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Last Name*"
+            android:layout_below="@+id/editTextFirstName"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Email*"
+            android:layout_below="@+id/editTextLastName"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:id="@+id/Group"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Group*"
+            android:layout_below="@+id/editTextEmail"
+            android:inputType="number"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:id="@+id/PostCode"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Post Code*"
+            android:layout_below="@+id/editTextEmail"
+            android:inputType="number"
+            android:layout_marginTop="15dp"/>
+        <Button
+            android:id="@+id/upload_changes"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/VolPoll_Red"
+            android:text="Save Detail"
+            android:layout_marginTop="40dp"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

@@ -36,6 +36,7 @@
             android:exported="false" />
 
 
+
         <!-- 修改名字 -->
         <activity
             android:name=".WelcomePage"
@@ -46,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.myapplication.SurveyPopupPage" />
     </application>
 
 </manifest>

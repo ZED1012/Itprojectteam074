@@ -20,8 +20,7 @@ public class WelcomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_page);
 
-        View v = findViewById(R.id.page1_menu_button); //需要设透明的控件的id
-        v.getBackground().setAlpha(0);       //0~255透明度值
+
 
 
         TextView pageOneText = findViewById(R.id.page1_text);

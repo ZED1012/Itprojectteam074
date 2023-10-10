@@ -23,6 +23,7 @@
             />
 
         <ImageButton
+            style="?android:attr/borderlessButtonStyle"
             android:id="@+id/all_page_menu_button"
             android:layout_width="60dp"
             android:layout_height="match_parent"
