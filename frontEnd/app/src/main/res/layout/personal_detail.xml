@@ -37,21 +37,24 @@
             android:layout_height="50dp"
             android:hint="First Name*"
             android:layout_marginTop="15dp"
-            android:layout_below="@id/intro"/>
+            android:layout_below="@id/intro"
+            android:singleLine="true" />
         <EditText
             android:id="@+id/editTextLastName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Last Name*"
             android:layout_below="@+id/editTextFirstName"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:singleLine="true"/>
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Email*"
             android:layout_below="@+id/editTextLastName"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:singleLine="true"/>
         <EditText
             android:id="@+id/editTextPostCode"
             android:layout_width="match_parent"
@@ -112,14 +115,26 @@
             android:layout_below="@+id/radioGroup"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:singleLine="true"
             />
+        <EditText
+            android:id="@+id/position"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Your position in group"
+            android:layout_below="@+id/editTextGroup"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:singleLine="true"
+            />
+
 
         <RadioGroup
             android:id="@+id/leader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/editTextGroup">
+            android:layout_below="@+id/position">
 
             <RadioButton
                 android:id="@+id/volunteer"
@@ -139,6 +154,35 @@
                 android:textSize="18sp"
                 />
         </RadioGroup>
+        <RadioGroup
+            android:id="@+id/peak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/leader">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Is your group associated with a peak or parent body association such as Netball Australia, Rotary International, or Parks Victoria who might take care of some of your insurance or governance?"
+                android:textSize="18sp" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/specify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:hint="Specify*"
+            android:layout_below="@id/peak" />
+
+        <RadioButton
+            android:id="@+id/agree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/specify"
+            android:text="By using VolPoll, you agree to the collection and use of information in accordance with the Australian Privacy Laws. Your answers will remain anonymous *"
+            android:textSize="18sp"/>
 
         <Button
             android:id="@+id/startSurvey"
@@ -147,7 +191,7 @@
             android:layout_alignParentEnd="true"
             android:text="Get Started >"
             android:textSize="22sp"
-            android:layout_below="@+id/leader"
+            android:layout_below="@+id/agree"
             android:layout_marginTop="40dp"
             android:backgroundTint="@drawable/button_selector"
             />
