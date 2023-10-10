@@ -23,11 +23,17 @@
             />
 
         <ImageButton
-            android:id="@+id/page1_menu_button"
+            android:id="@+id/survey_page_button"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:src="@drawable/baseline_menu_24" />
+        <ImageButton
+            android:id="@+id/detail_button"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:src="@drawable/baseline_person_24"/>
 
     </androidx.appcompat.widget.Toolbar>
 

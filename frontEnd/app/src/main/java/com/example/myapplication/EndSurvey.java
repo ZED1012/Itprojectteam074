@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide;
 
 
 
-public class EndSurvey extends AppCompatActivity {
+public class EndSurvey extends AllPageToolBar {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
