@@ -39,7 +39,7 @@
 
         <!-- 修改名字 -->
         <activity
-            android:name=".SurveyToolbar"
+            android:name=".WelcomePage"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
