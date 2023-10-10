@@ -38,11 +38,11 @@ public class SurveyPopupPage extends AllPageToolBar {
         EditText email = (EditText) findViewById(R.id.Email);
         EditText groupName = (EditText) findViewById(R.id.Group);
         EditText postCode = (EditText) findViewById(R.id.PostCode);
-        /*firstName.setText(basicDetail[0].toCharArray(), 0, basicDetail[0].length());
+        firstName.setText(basicDetail[0].toCharArray(), 0, basicDetail[0].length());
         lastName.setText(basicDetail[1].toCharArray(), 0, basicDetail[1].length());
         email.setText(basicDetail[2].toCharArray(), 0, basicDetail[2].length());
         groupName.setText(basicDetail[3].toCharArray(), 0, basicDetail[3].length());
-        postCode.setText(basicDetail[4].toCharArray(), 0, basicDetail[4].length());*/
+        postCode.setText(basicDetail[4].toCharArray(), 0, basicDetail[4].length());
 
 
         Button startButton = findViewById(R.id.upload_changes);

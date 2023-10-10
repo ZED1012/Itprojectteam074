@@ -100,9 +100,9 @@ public class PersonalDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 personalDetail(v);
-                /*Intent intent = new Intent();
+                Intent intent = new Intent();
                 intent.setClass(PersonalDetail.this, SurveyToolbar.class);
-                startActivity(intent);*/
+                startActivity(intent);
             }
         });
     }
@@ -127,13 +127,13 @@ public class PersonalDetail extends AppCompatActivity {
         editor.putBoolean("organisation", isOrganisation);
         editor.putBoolean("leader", isLeader);
         editor.apply();
-        /*Person client = new Person(firstName,lastName,email,postCode,groupName,isGroup,isClub,isOrganisation,isLeader);
+        Person client = new Person(firstName,lastName,email,postCode,groupName,isGroup,isClub,isOrganisation,isLeader);
         String[] data = new String[5];
-        data[1] = firstName;
-        data[2] = lastName;
-        data[3] = email;
-        data[4] = groupName;
-        data[5] = postCode;
+        data[0] = firstName;
+        data[1] = lastName;
+        data[2] = email;
+        data[3] = groupName;
+        data[4] = postCode;
         String group = getGroupType();
         String role = new String();
         if(isLeader){
@@ -141,17 +141,8 @@ public class PersonalDetail extends AppCompatActivity {
         }else{
             role = "member";
         }
-        //transform data
-        Intent intent=new Intent(PersonalDetail.this, SurveyPopupPage.class);
-        intent.putExtra("basicDetail", data);
-        startActivity(intent);
 
 
-        intent.putExtra("group", group);
-        startActivity(intent);
-
-        intent.putExtra("isLeader", role);
-        startActivity(intent);*/
 
         // Preparing the JSON payload
         String jsonPayload = String.format(
@@ -172,6 +163,13 @@ public class PersonalDetail extends AppCompatActivity {
         );
 
         postToBackend("http://hf2019.natapp1.cc/auth/signup", jsonPayload);
+
+        //transform data
+        Intent intent=new Intent(PersonalDetail.this, SurveyPopupPage.class);
+        intent.putExtra("basicDetail", data);
+        intent.putExtra("group", group);
+        intent.putExtra("isLeader", role);
+        startActivity(intent);
     }
 
     private String getGroupType() {
