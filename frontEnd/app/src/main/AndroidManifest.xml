@@ -34,6 +34,10 @@
         <activity
             android:name=".ForLeader"
             android:exported="false" />
+        <activity
+            android:name=".LearnMore"
+            android:exported="false" />
+
 
 
 
