@@ -38,7 +38,8 @@
             android:hint="First Name*"
             android:layout_marginTop="15dp"
             android:layout_below="@id/intro"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:inputType="text" />
         <EditText
             android:id="@+id/editTextLastName"
             android:layout_width="match_parent"
@@ -46,7 +47,8 @@
             android:hint="Last Name*"
             android:layout_below="@+id/editTextFirstName"
             android:layout_marginTop="15dp"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:inputType="text"/>
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
@@ -54,7 +56,8 @@
             android:hint="Email*"
             android:layout_below="@+id/editTextLastName"
             android:layout_marginTop="15dp"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:inputType="textEmailAddress"/>
         <EditText
             android:id="@+id/editTextPostCode"
             android:layout_width="match_parent"
@@ -62,7 +65,8 @@
             android:hint="Post Code*"
             android:layout_below="@+id/editTextEmail"
             android:inputType="number"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:maxLength="4"/>
 
         <TextView
             android:id="@+id/part_of"
@@ -116,6 +120,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:singleLine="true"
+            android:inputType="text"
             />
         <EditText
             android:id="@+id/position"
@@ -126,6 +131,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:singleLine="true"
+            android:inputType="text"
             />
 
 
@@ -154,28 +160,27 @@
                 android:textSize="18sp"
                 />
         </RadioGroup>
-        <RadioGroup
+
+
+        <RadioButton
             android:id="@+id/peak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/leader">
+            android:text="Is your group associated with a peak or parent body association such as Netball Australia, Rotary International, or Parks Victoria who might take care of some of your insurance or governance?"
+            android:textSize="18sp"
+            android:layout_below="@id/leader"
+            />
 
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Is your group associated with a peak or parent body association such as Netball Australia, Rotary International, or Parks Victoria who might take care of some of your insurance or governance?"
-                android:textSize="18sp"
-                />
 
-        </RadioGroup>
 
         <EditText
             android:id="@+id/specify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:hint="Specify*"
-            android:layout_below="@id/peak" />
+            android:hint="Please specify"
+            android:layout_below="@id/peak"
+            android:singleLine="true" />
 
         <RadioButton
             android:id="@+id/agree"

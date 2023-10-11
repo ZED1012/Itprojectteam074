@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -53,6 +55,9 @@ public class PersonalDetail extends AppCompatActivity {
     private boolean isGroup, isClub, isOrganisation, isLeader;
     private final OkHttpClient client = new OkHttpClient();
 
+    private EditText editPosition, editSpecify;
+    private boolean agree;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +68,9 @@ public class PersonalDetail extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPostCode = findViewById(R.id.editTextPostCode);
         editTextGroup = findViewById(R.id.editTextGroup);
+
+        editPosition = findViewById(R.id.position);
+        editSpecify = findViewById(R.id.specify);
 
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -91,6 +99,32 @@ public class PersonalDetail extends AppCompatActivity {
                     isLeader = true;
                 } else {
                     isLeader = false;
+                }
+            }
+        });
+
+
+        RadioButton peakButton = findViewById(R.id.peak);
+        peakButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    editSpecify.setVisibility(View.VISIBLE);
+                } else {
+                    editSpecify.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
+        RadioButton agreeButton = findViewById(R.id.agree);
+        agreeButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    agree = true;
+                } else {
+                    agree = false;
                 }
             }
         });
