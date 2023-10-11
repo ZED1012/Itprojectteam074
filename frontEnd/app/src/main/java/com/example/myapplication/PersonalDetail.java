@@ -101,7 +101,7 @@ public class PersonalDetail extends AppCompatActivity {
             public void onClick(View v) {
                 personalDetail(v);
                 Intent intent = new Intent();
-                intent.setClass(PersonalDetail.this, MainActivity.class);
+                intent.setClass(PersonalDetail.this, SurveyPopupPage.class);
                 startActivity(intent);
             }
         });
