@@ -23,7 +23,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class SurveyPopupPage extends AllPageToolBar {
+public class SurveyPopupPage extends SurveyToolbar {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.survey_popup_page);
@@ -36,7 +36,7 @@ public class SurveyPopupPage extends AllPageToolBar {
         //ClientInfo client = (ClientInfo) this.getApplication();
 
         //在edittext中写入历史数据
-
+        /*
         EditText firstName = (EditText) findViewById(R.id.FirstName);
         EditText lastName = (EditText) findViewById(R.id.LastName);
         EditText email = (EditText) findViewById(R.id.Email);
@@ -46,7 +46,7 @@ public class SurveyPopupPage extends AllPageToolBar {
         lastName.setText(basicDetail[1].toCharArray(), 0, basicDetail[1].length());
         email.setText(basicDetail[2].toCharArray(), 0, basicDetail[2].length());
         groupName.setText(basicDetail[3].toCharArray(), 0, basicDetail[3].length());
-        postCode.setText(basicDetail[4].toCharArray(), 0, basicDetail[4].length());
+        postCode.setText(basicDetail[4].toCharArray(), 0, basicDetail[4].length());*/
 
 
 

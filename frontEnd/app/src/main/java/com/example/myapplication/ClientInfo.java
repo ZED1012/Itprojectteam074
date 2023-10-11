@@ -13,7 +13,6 @@ public class ClientInfo extends Application {
     boolean isOrganisation;
     boolean isLeader;
     public void onCreate() {
-        super.onCreate();
         firstName = "";
         lastName = "";
         email = "";
@@ -23,6 +22,7 @@ public class ClientInfo extends Application {
         isClub = false;
         isOrganisation = false;
         isLeader = false;
+        super.onCreate();
 
     }
     public void setFirstName(String firstName){

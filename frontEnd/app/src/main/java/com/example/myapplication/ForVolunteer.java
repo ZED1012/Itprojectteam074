@@ -11,5 +11,4 @@ public class ForVolunteer extends AllPageToolBar {
         setContentView(R.layout.for_volunteer);
     }
 
-    // tool bar
 }

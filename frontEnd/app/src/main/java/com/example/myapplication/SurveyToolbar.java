@@ -13,41 +13,18 @@ import androidx.appcompat.widget.Toolbar;
 public class SurveyToolbar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.survey_toolbar);
-    }
-
-    protected void onResume() {
-        super.onResume();
-        onPostOnCreate();
-    }
-
-    public final void onPostOnCreate()//find同一个控件
-    {
-        InitSetting();
-        InitEvent();
-    }
-
-    protected void InitSetting() {
-
-        //停止按钮
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.survey_page_toolbar);
-        final ImageButton detailButton = (ImageButton) findViewById(R.id.detail_button);
-    }
-
-    protected void InitEvent() {
-        final ImageButton surveyButton = (ImageButton) findViewById(R.id.survey_page_button);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.survey_page_toolbar);
-        final ImageButton detailButton = (ImageButton) findViewById(R.id.detail_button);
-        surveyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupMenu(surveyButton);
+        //setContentView(R.layout.survey_toolbar);
+        final ImageButton button = (ImageButton) findViewById(R.id.survey_page_button);
+        final ImageButton detailButton = findViewById(R.id.detail_button);
+        final Toolbar toolbar = findViewById(R.id.survey_page_toolbar);
+        button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                showPopupMenu(button);
             }
         });
-        detailButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        detailButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
                 showDetailPage(detailButton);
-
             }
         });
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -87,7 +64,7 @@ public class SurveyToolbar extends AppCompatActivity {
                     return true;
                 }
                 if (item.getItemId() == R.id.learn_more) {
-                    contactUsPage();
+                    learnMorePage();
                     return true;
                 }
                 return false;

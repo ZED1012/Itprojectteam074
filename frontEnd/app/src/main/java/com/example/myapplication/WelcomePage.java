@@ -21,8 +21,6 @@ public class WelcomePage extends AppCompatActivity {
         setContentView(R.layout.welcome_page);
 
 
-
-
         TextView pageOneText = findViewById(R.id.page1_text);
         Toolbar pageOneToolbar = findViewById(R.id.page1_toolbar);
 

@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <include
-        android:id="@+id/survey_page_button"
+        android:id="@+id/survey_tool_bar"
         layout="@layout/survey_toolbar" />
+
 
     <ScrollView
         android:layout_width="match_parent"

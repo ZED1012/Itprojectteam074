@@ -101,7 +101,7 @@ public class PersonalDetail extends AppCompatActivity {
             public void onClick(View v) {
                 personalDetail(v);
                 Intent intent = new Intent();
-                intent.setClass(PersonalDetail.this, SurveyToolbar.class);
+                intent.setClass(PersonalDetail.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -168,11 +168,11 @@ public class PersonalDetail extends AppCompatActivity {
         postToBackend("http://hf2019.natapp1.cc/auth/signup", jsonPayload);
 
         //transform data
-        Intent intent=new Intent(PersonalDetail.this, SurveyPopupPage.class);
+        /*Intent intent=new Intent(PersonalDetail.this, SurveyPopupPage.class);
         intent.putExtra("basicDetail", data);
         intent.putExtra("group", group);
         intent.putExtra("isLeader", role);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     private String getGroupType() {
