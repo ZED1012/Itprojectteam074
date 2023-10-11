@@ -69,6 +69,10 @@ public class WelcomePage extends AppCompatActivity {
                     contactUsPage();
                     return true;
                 }
+                if (item.getItemId() == R.id.learn_more) {
+                    learnMorePage();
+                    return true;
+                }
                 return false;
             }
         });
@@ -102,4 +106,10 @@ public class WelcomePage extends AppCompatActivity {
         intent.setClass(WelcomePage.this, ContactUs.class);
         startActivity(intent);
     }
+    protected void learnMorePage(){
+        Intent intent = new Intent();
+        intent.setClass(WelcomePage.this, LearnMore.class);
+        startActivity(intent);
+    }
+
 }

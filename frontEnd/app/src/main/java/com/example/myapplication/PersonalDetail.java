@@ -127,7 +127,7 @@ public class PersonalDetail extends AppCompatActivity {
         editor.putBoolean("organisation", isOrganisation);
         editor.putBoolean("leader", isLeader);
         editor.apply();
-        Person client = new Person(firstName,lastName,email,postCode,groupName,isGroup,isClub,isOrganisation,isLeader);
+        //Person client = new Person(firstName,lastName,email,postCode,groupName,isGroup,isClub,isOrganisation,isLeader);
         String[] data = new String[5];
         data[0] = firstName;
         data[1] = lastName;
@@ -141,6 +141,9 @@ public class PersonalDetail extends AppCompatActivity {
         }else{
             role = "member";
         }
+        //global var
+        //ClientInfo client = (ClientInfo) getApplication();
+        //client.setFirstName(firstName);
 
 
 

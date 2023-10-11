@@ -14,6 +14,10 @@
         android:id = "@+id/contact_us"
         android:title = "Contact Us"
         />
+    <item
+        android:id = "@+id/learn_more"
+        android:title = "Learn More"
+        />
 
 
 </menu>

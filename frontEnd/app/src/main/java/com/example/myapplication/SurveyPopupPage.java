@@ -27,22 +27,28 @@ public class SurveyPopupPage extends AllPageToolBar {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.survey_popup_page);
-
+        //获得数据
         Intent intent = getIntent();
         String[] basicDetail = intent.getStringArrayExtra("basicDetail");
         String group = intent.getStringExtra("group");
         String role = intent.getStringExtra("isLeader");
+
+        //ClientInfo client = (ClientInfo) this.getApplication();
+
+        //在edittext中写入历史数据
 
         EditText firstName = (EditText) findViewById(R.id.FirstName);
         EditText lastName = (EditText) findViewById(R.id.LastName);
         EditText email = (EditText) findViewById(R.id.Email);
         EditText groupName = (EditText) findViewById(R.id.Group);
         EditText postCode = (EditText) findViewById(R.id.PostCode);
-        firstName.setText(basicDetail[0].toCharArray(), 0, basicDetail[0].length());
+        firstName.setText(basicDetail[0].toCharArray(), 0, basicDetail[0].length());//client.getFirstName()
         lastName.setText(basicDetail[1].toCharArray(), 0, basicDetail[1].length());
         email.setText(basicDetail[2].toCharArray(), 0, basicDetail[2].length());
         groupName.setText(basicDetail[3].toCharArray(), 0, basicDetail[3].length());
         postCode.setText(basicDetail[4].toCharArray(), 0, basicDetail[4].length());
+
+
 
 
         Button startButton = findViewById(R.id.upload_changes);

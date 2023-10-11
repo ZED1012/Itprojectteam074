@@ -75,7 +75,7 @@ public class SurveyToolbar extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
 
                 if (item.getItemId() == R.id.volunteer) {
-                    volunteerPage(view);
+                    volunteerPage();
                     return true;
                 }
                 if (item.getItemId() == R.id.leader) {
@@ -83,6 +83,10 @@ public class SurveyToolbar extends AppCompatActivity {
                     return true;
                 }
                 if (item.getItemId() == R.id.contact_us) {
+                    contactUsPage();
+                    return true;
+                }
+                if (item.getItemId() == R.id.learn_more) {
                     contactUsPage();
                     return true;
                 }
@@ -98,7 +102,7 @@ public class SurveyToolbar extends AppCompatActivity {
 
     }
 
-    protected void volunteerPage(final View view) {
+    protected void volunteerPage() {
         Intent intent = new Intent();
         intent.setClass(SurveyToolbar.this, ForVolunteer.class);
         startActivity(intent);
@@ -118,5 +122,12 @@ public class SurveyToolbar extends AppCompatActivity {
         intent.setClass(SurveyToolbar.this, ContactUs.class);
         startActivity(intent);
     }
+
+    protected void learnMorePage(){
+        Intent intent = new Intent();
+        intent.setClass(SurveyToolbar.this, LearnMore.class);
+        startActivity(intent);
+    }
+
 }
 

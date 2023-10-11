@@ -86,6 +86,10 @@ public class AllPageToolBar extends AppCompatActivity {
                     contactUsPage();
                     return true;
                 }
+                if (item.getItemId() == R.id.learn_more) {
+                    learnMorePage();
+                    return true;
+                }
                 return false;
             }
         });
@@ -117,6 +121,11 @@ public class AllPageToolBar extends AppCompatActivity {
     protected void contactUsPage() {
         Intent intent = new Intent();
         intent.setClass(AllPageToolBar.this, ContactUs.class);
+        startActivity(intent);
+    }
+    protected void learnMorePage(){
+        Intent intent = new Intent();
+        intent.setClass(AllPageToolBar.this, LearnMore.class);
         startActivity(intent);
     }
 
