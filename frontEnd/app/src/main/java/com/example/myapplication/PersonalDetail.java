@@ -190,7 +190,6 @@ public class PersonalDetail extends AppCompatActivity {
         //client.setFirstName(firstName);
 
 
-
         // Preparing the JSON payload
         String jsonPayload = String.format(
                 "{" +
