@@ -172,11 +172,11 @@ public class PersonalDetail extends AppCompatActivity {
         if(firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || postCode.isEmpty() || groupName.isEmpty()){
             return false;
         }
-        RadioButton peakButton =  view.findViewById(R.id.peak);
+
 
         String specify = editSpecify.getText().toString();
         String position = editPosition.getText().toString();
-        boolean peak = peakButton.isChecked();
+        boolean peak = !specify.isEmpty();
 
         // Save the details in SharedPreferences
         SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
