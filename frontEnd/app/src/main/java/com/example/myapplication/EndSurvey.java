@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,5 +22,15 @@ public class EndSurvey extends AllPageToolBar {
 
         ImageView imageView = findViewById(R.id.completed_gif);
         Glide.with(this).load(R.drawable.completed).into(imageView);//gif
+
+        TextView textView = findViewById(R.id.textView);
+        ImageButton menuButton = findViewById(R.id.all_page_menu_button);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                menuButton.performClick();
+            }
+        });
+
     }
 }
