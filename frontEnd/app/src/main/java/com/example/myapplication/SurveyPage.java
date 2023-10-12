@@ -205,7 +205,7 @@ public class SurveyPage extends AppCompatActivity {
                 public void run() {
                     fieldGroup.setText(apiName);
                     question.setText(apiQuestion);
-                    if (!apiDescription.isEmpty()) {
+                    if (!(apiDescription == "null")) {
                         description.setText(apiDescription);
                     } else {
                         description.setText("");

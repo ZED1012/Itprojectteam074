@@ -26,12 +26,16 @@
             android:layout_height="50dp"
             android:hint="First Name*"
             android:layout_marginTop="15dp"
+            android:singleLine="true"
+            android:inputType="text"
             android:layout_below="@id/intro"/>
         <EditText
             android:id="@+id/LastName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Last Name*"
+            android:singleLine="true"
+            android:inputType="text"
             android:layout_below="@+id/editTextFirstName"
             android:layout_marginTop="15dp"/>
         <EditText
@@ -39,6 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Email*"
+            android:singleLine="true"
+            android:inputType="textEmailAddress"
             android:layout_below="@+id/editTextLastName"
             android:layout_marginTop="15dp"/>
         <EditText
@@ -47,7 +53,8 @@
             android:layout_height="50dp"
             android:hint="Group*"
             android:layout_below="@+id/editTextEmail"
-            android:inputType="number"
+            android:singleLine="true"
+            android:inputType="text"
             android:layout_marginTop="15dp"/>
         <EditText
             android:id="@+id/PostCode"
@@ -56,6 +63,7 @@
             android:hint="Post Code*"
             android:layout_below="@+id/editTextEmail"
             android:inputType="number"
+            android:maxLength="4"
             android:layout_marginTop="15dp"/>
         <Button
             android:id="@+id/upload_changes"
