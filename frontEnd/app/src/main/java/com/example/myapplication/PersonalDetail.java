@@ -6,13 +6,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -50,13 +51,11 @@ class Person {
 }
 
 public class PersonalDetail extends AppCompatActivity {
+    private int role_id = 0;
 
     private EditText editTextFirstName, editTextLastName, editTextEmail, editTextPostCode, editTextGroup;
     private boolean isGroup, isClub, isOrganisation, isLeader;
     private final OkHttpClient client = new OkHttpClient();
-
-    private EditText editPosition, editSpecify;
-    private boolean agree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +67,6 @@ public class PersonalDetail extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPostCode = findViewById(R.id.editTextPostCode);
         editTextGroup = findViewById(R.id.editTextGroup);
-
-        editPosition = findViewById(R.id.position);
-        editSpecify = findViewById(R.id.specify);
 
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -97,35 +93,13 @@ public class PersonalDetail extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.lead) {
                     isLeader = true;
-                } else {
+                    role_id = 1;
+                } else if (checkedId == R.id.volunteer) {
                     isLeader = false;
+                    role_id = 2;
                 }
-            }
-        });
-
-
-        RadioButton peakButton = findViewById(R.id.peak);
-        peakButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    editSpecify.setVisibility(View.VISIBLE);
-                } else {
-                    editSpecify.setVisibility(View.GONE);
-                }
-            }
-        });
-
-
-        RadioButton agreeButton = findViewById(R.id.agree);
-        agreeButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    agree = true;
-                } else {
-                    agree = false;
-                }
+                // role_id check
+                Toast.makeText(PersonalDetail.this, "Role ID: " + role_id, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -133,9 +107,14 @@ public class PersonalDetail extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (role_id == 0) {
+                    Toast.makeText(PersonalDetail.this, "Please select either Lead or Volunteer", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 personalDetail(v);
                 Intent intent = new Intent();
-                intent.setClass(PersonalDetail.this, SurveyPopupPage.class);
+                intent.setClass(PersonalDetail.this, SurveyPage.class);
+                intent.putExtra("role_id", role_id);
                 startActivity(intent);
             }
         });
@@ -168,13 +147,7 @@ public class PersonalDetail extends AppCompatActivity {
         data[2] = email;
         data[3] = groupName;
         data[4] = postCode;
-        String group = getGroupType();
-        String role = new String();
-        if(isLeader){
-            role = "leader";
-        }else{
-            role = "member";
-        }
+
         //global var
         //ClientInfo client = (ClientInfo) getApplication();
         //client.setFirstName(firstName);
@@ -194,9 +167,9 @@ public class PersonalDetail extends AppCompatActivity {
                         "\"peak_details\": \"\"," +
                         "\"position\": \"%s\"," +
                         "\"postcode\": \"%s\"," +
-                        "\"role_id\": 0" +
+                        "\"role_id\": %d" +
                         "}",
-                groupName, email, firstName, getGroupType(), lastName, isLeader ? "leader" : "member", postCode
+                groupName, email, firstName, getGroupType(), lastName, isLeader ? "leader" : "member", postCode,role_id
         );
 
         postToBackend("http://hf2019.natapp1.cc/auth/signup", jsonPayload);
@@ -221,6 +194,10 @@ public class PersonalDetail extends AppCompatActivity {
         }
         return "unknown";
     }
+    private String getToken() {
+        SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+        return preferences.getString("token", "Token not found");  // Returns "Token not found" if not present
+    }
 
     private void postToBackend(String url, String jsonPayload) {
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonPayload);
@@ -241,11 +218,29 @@ public class PersonalDetail extends AppCompatActivity {
                     }
                 });
             }
-
+            private void saveToken(String token) {
+                SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("token", token);
+                editor.apply();
+            }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+
                 if (!response.isSuccessful()) {
                     throw new IOException("Unexpected code " + response);
+                }
+
+                String responseBody = response.body().string();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(responseBody);
+                    String token = jsonObject.getString("data");
+
+                    saveToken(token);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
                 runOnUiThread(new Runnable() {
