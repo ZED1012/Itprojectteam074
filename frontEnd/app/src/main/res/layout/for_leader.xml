@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
+                android:layout_marginVertical="30dp"
                 android:text="For Leaders"
                 android:textColor="@color/VolPoll_Blue"
                 android:textSize="35sp"
@@ -52,7 +52,7 @@
                 android:textColor="@color/VolPoll_Blue"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="12dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 android:textColor="@color/VolPoll_Blue"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="12dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                 android:textColor="@color/VolPoll_Blue"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="12dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

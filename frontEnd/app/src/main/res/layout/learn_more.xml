@@ -89,10 +89,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:lineSpacingMultiplier="1.25"
+                    android:lineSpacingMultiplier="1.15"
                     android:text="VolPoll presents a contemporary understanding of what effective volunteer engagement involves."
                     android:textColor="@color/VolPoll_Blue"
-                    android:textSize="22sp" />
+                    android:textSize="21sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -108,10 +108,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:lineSpacingMultiplier="1.25"
+                    android:lineSpacingMultiplier="1.15"
                     android:text="VolPoll allows you to assess your volunteering experience in an organisation and take action where required."
                     android:textColor="@color/VolPoll_Blue"
-                    android:textSize="22sp" />
+                    android:textSize="21sp" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
