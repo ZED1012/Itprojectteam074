@@ -23,6 +23,7 @@ public class LearnMore extends AllPageToolBar{
             @Override
             public void onClick(View view) {
                 openBrochurePage();
+
             }
         });
     }
