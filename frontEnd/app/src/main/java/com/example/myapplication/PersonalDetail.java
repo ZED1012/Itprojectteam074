@@ -62,7 +62,7 @@ public class PersonalDetail extends AppCompatActivity {
     private final OkHttpClient client = new OkHttpClient();
 
     private EditText editPosition, editSpecify;
-    private boolean agree;
+    private boolean agree, peak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +118,7 @@ public class PersonalDetail extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
+                    peak = true;
                     editSpecify.setVisibility(View.VISIBLE);
                 } else {
                     editSpecify.setVisibility(View.GONE);
@@ -176,7 +177,7 @@ public class PersonalDetail extends AppCompatActivity {
 
         String specify = editSpecify.getText().toString();
         String position = editPosition.getText().toString();
-        boolean peak = !specify.isEmpty();
+
 
         // Save the details in SharedPreferences
         SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
