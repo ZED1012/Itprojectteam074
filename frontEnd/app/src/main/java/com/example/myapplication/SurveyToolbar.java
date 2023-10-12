@@ -20,16 +20,19 @@ public class SurveyToolbar extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 showPopupMenu(button);
+
             }
         });
         detailButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 showDetailPage(detailButton);
+
             }
         });
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             public void onClick(View w) {
                 finish();
+
             }
         });
     }

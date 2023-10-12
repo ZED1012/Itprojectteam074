@@ -30,6 +30,7 @@ public class WelcomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showPopupMenu(button);
+
             }
         });
 
@@ -40,6 +41,7 @@ public class WelcomePage extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(WelcomePage.this, PersonalDetail.class);
                 startActivity(intent);
+
             }
         });
     }

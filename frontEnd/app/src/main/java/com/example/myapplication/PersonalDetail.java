@@ -27,6 +27,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 class Person {
     String firstName;
     String lastName;
@@ -142,13 +145,14 @@ public class PersonalDetail extends AppCompatActivity {
             public void onClick(View v) {
                 if (role_id == 0) {
                     Toast.makeText(PersonalDetail.this, "Please select either Lead or Volunteer", Toast.LENGTH_SHORT).show();
-                    return;
+
                 }
                 personalDetail(v);
                 Intent intent = new Intent();
                 intent.setClass(PersonalDetail.this, SurveyPage.class);
                 intent.putExtra("role_id", role_id);
                 startActivity(intent);
+
             }
         });
     }
@@ -227,10 +231,7 @@ public class PersonalDetail extends AppCompatActivity {
         }
         return "unknown";
     }
-    private String getToken() {
-        SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
-        return preferences.getString("token", "Token not found");  // Returns "Token not found" if not present
-    }
+
 
     private void postToBackend(String url, String jsonPayload) {
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonPayload);
@@ -252,11 +253,12 @@ public class PersonalDetail extends AppCompatActivity {
                 });
             }
             private void saveToken(String token) {
-                SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
+                SharedPreferences sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("token", token);
                 editor.apply();
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 

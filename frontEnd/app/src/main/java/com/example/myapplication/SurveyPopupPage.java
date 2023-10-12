@@ -59,6 +59,7 @@ public class SurveyPopupPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 personalDetail(basicDetail[0], basicDetail[1], basicDetail[2], basicDetail[3], basicDetail[4], group, role);
+
             }
         });
 
@@ -70,16 +71,19 @@ public class SurveyPopupPage extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 showPopupMenu(button);
+
             }
         });
         detailButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 showDetailPage(detailButton);
+
             }
         });
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             public void onClick(View w) {
                 finish();
+
             }
         });
     }

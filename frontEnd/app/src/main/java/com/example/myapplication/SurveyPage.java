@@ -11,7 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.myapplication.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +26,12 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
 
 public class SurveyPage extends AppCompatActivity {
 
@@ -51,10 +57,39 @@ public class SurveyPage extends AppCompatActivity {
         fieldGroup = findViewById(R.id.fieldGroup);
         description = findViewById(R.id.description);
 
+
+
         Button NextButton = findViewById(R.id.nextButton);
         NextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RadioGroup radioGroup = findViewById(R.id.group);
+                int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+
+                int answer = -1;
+                if (selectedRadioButtonId == R.id.button1) {
+                    answer = 1;
+                } else if (selectedRadioButtonId == R.id.button2) {
+                    answer = 2;
+                }else if (selectedRadioButtonId == R.id.button3) {
+                    answer = 3;
+                }else if (selectedRadioButtonId == R.id.button4) {
+                    answer = 4;
+                }else if (selectedRadioButtonId == R.id.button5) {
+                    answer = 5;
+                }
+
+
+                try {
+                    int field_id = dataArray.getJSONObject(currentQuestionIndex).getInt("id");
+
+                    String token = getToken();
+
+                    postAnswerData(answer, field_id, token);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 if (currentQuestionIndex < dataArray.length() - 1) {
                     currentQuestionIndex++;
                     updateUI();
@@ -80,6 +115,55 @@ public class SurveyPage extends AppCompatActivity {
 
         int role_id = getIntent().getIntExtra("role_id", 0);
         fetchQuestionData(role_id);
+    }
+    private String getToken() {
+        SharedPreferences sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("token", "");
+    }
+    private void postAnswerData(int answer, int field_id, String token) {
+        OkHttpClient client = new OkHttpClient();
+        JSONObject json = new JSONObject();
+        try {
+            if (answer != -1) {
+                json.put("answer", answer);
+                json.put("skipped", JSONObject.NULL);
+            } else {
+                json.put("skipped", true);
+            }
+            json.put("field_id", field_id);
+            json.put("textAnswer", JSONObject.NULL);
+            json.put("token", token);
+
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString());
+
+            Request request = new Request.Builder()
+                    .url("http://hf2019.natapp1.cc/answers")
+                    .post(requestBody)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    // Handle the error here
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(SurveyPage.this, "Data fetched successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else {
+                        Toast.makeText(SurveyPage.this, "Failed to fetch data. Please check your connection.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
     private void updateUI() {
         try {
@@ -109,6 +193,7 @@ public class SurveyPage extends AppCompatActivity {
                     }
 
                     RadioGroup group = findViewById(R.id.group);
+                    group.clearCheck();
                     if ("Intro".equals(apiType)) {
                         group.setVisibility(View.GONE);
                     } else {
