@@ -3,6 +3,7 @@ package com.example.myapplication;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,8 +31,11 @@ public class SurveyPage extends AppCompatActivity {
 
     private TextView fieldGroup, question, description;
     private RadioButton button1, button2, button3, button4, button5;
-    private int currentQuestionIndex = 0;
+
     private JSONArray dataArray;
+
+    private int currentQuestionIndex = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class SurveyPage extends AppCompatActivity {
         button5 = findViewById(R.id.button5);
         fieldGroup = findViewById(R.id.fieldGroup);
         description = findViewById(R.id.description);
+
         Button NextButton = findViewById(R.id.nextButton);
         NextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +58,15 @@ public class SurveyPage extends AppCompatActivity {
                 if (currentQuestionIndex < dataArray.length() - 1) {
                     currentQuestionIndex++;
                     updateUI();
+                } else {
+                    // Navigate to the EndSurvey page
+                    Intent intent = new Intent(SurveyPage.this, EndSurvey.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
+
         Button PreviouseButton = findViewById(R.id.previousButton);
         PreviouseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +99,13 @@ public class SurveyPage extends AppCompatActivity {
                         description.setText(apiDescription);
                     } else {
                         description.setText("");
+                    }
+
+                    Button previousButton = findViewById(R.id.previousButton);
+                    if (currentQuestionIndex == 0) {
+                        previousButton.setVisibility(View.GONE);
+                    } else {
+                        previousButton.setVisibility(View.VISIBLE);
                     }
 
                     RadioGroup group = findViewById(R.id.group);
@@ -124,7 +142,7 @@ public class SurveyPage extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(responseData);
                         dataArray = jsonObject.getJSONArray("data");
-                        updateUI(); // This function will be defined in the next step
+                        updateUI();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
