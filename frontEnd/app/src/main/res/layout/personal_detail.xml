@@ -12,7 +12,7 @@
         <ImageView
             android:id="@+id/logo"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:src="@drawable/red_logo"
             />
 
@@ -169,7 +169,7 @@
             android:text="Is your group associated with a peak or parent body association such as Netball Australia, Rotary International, or Parks Victoria who might take care of some of your insurance or governance?"
             android:textSize="18sp"
             android:layout_below="@id/leader"
-            />
+            android:layout_marginTop="20dp" />
 
 
 
@@ -188,7 +188,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/specify"
             android:text="By using VolPoll, you agree to the collection and use of information in accordance with the Australian Privacy Laws. Your answers will remain anonymous *"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/agree"
+            android:text="Please complete all required fields(*)"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FF0000"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/startSurvey"

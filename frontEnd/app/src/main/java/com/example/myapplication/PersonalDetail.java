@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -138,29 +139,44 @@ public class PersonalDetail extends AppCompatActivity {
         });
 
         Button startButton = findViewById(R.id.startSurvey);
+        TextView errorMessage = findViewById(R.id.errorMessage);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (role_id == 0) {
-                    Toast.makeText(PersonalDetail.this, "Please select either Lead or Volunteer", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(PersonalDetail.this, "Please select either Leader or Volunteer", Toast.LENGTH_SHORT).show();
                 }
-                personalDetail(v);
-                Intent intent = new Intent();
-                intent.setClass(PersonalDetail.this, SurveyPage.class);
-                intent.putExtra("role_id", role_id);
-                startActivity(intent);
+                if(!agree){
+                    Toast.makeText(PersonalDetail.this, "Please agree to our privacy policy to proceed.", Toast.LENGTH_SHORT).show();
+                }
+                if(personalDetail(v)) {
+                    Intent intent = new Intent();
+                    intent.setClass(PersonalDetail.this, SurveyPage.class);
+                    intent.putExtra("role_id", role_id);
+                    startActivity(intent);
+                } else{
+                    errorMessage.setVisibility(View.VISIBLE);
+                }
 
             }
         });
     }
 
-    public void personalDetail(View view) {
+    public boolean personalDetail(View view) {
         String firstName = editTextFirstName.getText().toString();
         String lastName = editTextLastName.getText().toString();
         String email = editTextEmail.getText().toString();
         String postCode = editTextPostCode.getText().toString();
         String groupName = editTextGroup.getText().toString();
+
+        if(firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || postCode.isEmpty() || groupName.isEmpty()){
+            return false;
+        }
+        RadioButton peakButton =  view.findViewById(R.id.peak);
+
+        String specify = editSpecify.getText().toString();
+        String position = editPosition.getText().toString();
+        boolean peak = peakButton.isChecked();
 
         // Save the details in SharedPreferences
         SharedPreferences preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
@@ -206,13 +222,13 @@ public class PersonalDetail extends AppCompatActivity {
                         "\"first_name\": \"%s\"," +
                         "\"group_type\": \"%s\"," +
                         "\"last_name\": \"%s\"," +
-                        "\"peak\": true," +
-                        "\"peak_details\": \"\"," +
+                        "\"peak\": %b," +
+                        "\"peak_details\": \"%s\"," +
                         "\"position\": \"%s\"," +
                         "\"postcode\": \"%s\"," +
                         "\"role_id\": %d" +
                         "}",
-                groupName, email, firstName, getGroupType(), lastName, isLeader ? "leader" : "member", postCode,role_id
+                groupName, email, firstName, getGroupType(), lastName, peak, specify, position, postCode, role_id
         );
 
         postToBackend("http://hf2019.natapp1.cc/auth/signup", jsonPayload);
@@ -223,6 +239,7 @@ public class PersonalDetail extends AppCompatActivity {
         intent.putExtra("group", group);
         intent.putExtra("isLeader", role);
         startActivity(intent);*/
+        return true;
     }
 
     private String getGroupType() {
