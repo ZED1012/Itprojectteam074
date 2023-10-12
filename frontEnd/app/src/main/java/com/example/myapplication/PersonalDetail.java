@@ -184,8 +184,17 @@ public class PersonalDetail extends AppCompatActivity {
         data[4] = postCode;
 
         //global var
-        //ClientInfo client = (ClientInfo) getApplication();
-        //client.setFirstName(firstName);
+        ClientInfo client = (ClientInfo) getApplication();
+        client.setFirstName(firstName);
+        client.setLastName(lastName);
+        client.setEmail(email);
+        client.setGroup(groupName);
+        client.setPostCode(postCode);
+        client.setLeader(isLeader);
+        client.setIsGroup(isGroup);
+        client.setClub(isClub);
+        client.setOrganisation(isOrganisation);
+        client.setRoleId(role_id);
 
 
         // Preparing the JSON payload

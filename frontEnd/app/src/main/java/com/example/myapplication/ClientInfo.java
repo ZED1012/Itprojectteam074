@@ -12,6 +12,16 @@ public class ClientInfo extends Application {
     boolean isClub;
     boolean isOrganisation;
     boolean isLeader;
+    int roleId;
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
     public void onCreate() {
         firstName = "";
         lastName = "";
@@ -22,35 +32,79 @@ public class ClientInfo extends Application {
         isClub = false;
         isOrganisation = false;
         isLeader = false;
+        roleId = 0;
         super.onCreate();
 
     }
-    public void setFirstName(String firstName){
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    public String getFirstName(){
+
+    public String getFirstName() {
         return this.firstName;
     }
-    public void setLastName(String lastName){
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public void setEmail(String email){
+
+    public void setEmail(String email) {
         this.email = email;
     }
-    public void setPostCode(String postCode){
+
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
-    public void setGroup(String group){
+
+    public void setGroup(String group) {
         this.group = group;
     }
-    public void setClub(boolean isClub){
+    public void setIsGroup(boolean isGroup){
+        this.isGroup = isGroup;
+    }
+    public void setClub(boolean isClub) {
         this.isClub = isClub;
     }
-    public void setOrganisation(boolean isOrganisation){
+
+    public void setOrganisation(boolean isOrganisation) {
         this.isOrganisation = isOrganisation;
     }
-    public void setLeader(boolean isLeader){
+
+    public void setLeader(boolean isLeader) {
         this.isLeader = isLeader;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public boolean isGroup() {
+        return isGroup;
+    }
+
+    public boolean isClub() {
+        return isClub;
+    }
+
+    public boolean isOrganisation() {
+        return isOrganisation;
+    }
+
+    public boolean isLeader() {
+        return isLeader;
     }
 
 
