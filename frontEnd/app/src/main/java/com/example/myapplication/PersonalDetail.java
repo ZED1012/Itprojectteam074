@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -79,6 +80,7 @@ public class PersonalDetail extends AppCompatActivity {
         editSpecify = findViewById(R.id.specify);
 
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
+        radioGroup.check(R.id.groupRadio);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -113,7 +115,7 @@ public class PersonalDetail extends AppCompatActivity {
             }
         });
 
-        RadioButton peakButton = findViewById(R.id.peak);
+        CheckBox peakButton = findViewById(R.id.peak);
         peakButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -121,6 +123,8 @@ public class PersonalDetail extends AppCompatActivity {
                     peak = true;
                     editSpecify.setVisibility(View.VISIBLE);
                 } else {
+                    peakButton.setChecked(false);
+                    peak = false;
                     editSpecify.setVisibility(View.GONE);
                 }
             }
@@ -131,11 +135,7 @@ public class PersonalDetail extends AppCompatActivity {
         agreeButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    agree = true;
-                } else {
-                    agree = false;
-                }
+                agree = b;
             }
         });
 
