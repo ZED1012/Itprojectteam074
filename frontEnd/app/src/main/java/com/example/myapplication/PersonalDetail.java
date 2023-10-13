@@ -150,12 +150,13 @@ public class PersonalDetail extends AppCompatActivity {
                 if(!agree){
                     Toast.makeText(PersonalDetail.this, "Please agree to our privacy policy to proceed.", Toast.LENGTH_SHORT).show();
                 }
-                if(personalDetail(v)) {
+
+                if (personalDetail(v) && role_id!=0 && agree) {
                     Intent intent = new Intent();
                     intent.setClass(PersonalDetail.this, SurveyPage.class);
                     intent.putExtra("role_id", role_id);
                     startActivity(intent);
-                } else{
+                } else {
                     errorMessage.setVisibility(View.VISIBLE);
                 }
 

@@ -32,11 +32,13 @@
         android:layout_height="wrap_content"
         android:text="VolPoll+ is your complete package to assess your volunteer impact. Want further insight? VolPoll+ is now available for organisations."
         android:layout_below="@id/title"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:autoLink="email"
         android:textColorLink="@color/VolPoll_Red"
         android:textColor="@color/VolPoll_Blue"
         android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:lineSpacingMultiplier="1.15"
         />
 
 
@@ -46,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="For further information, please contact Sara Sterling via email info@volunteeringvictoria.org.au."
         android:layout_below="@id/volPollPlus"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:autoLink="email"
         android:textColorLink="@color/VolPoll_Red"
         android:textColor="@color/VolPoll_Blue"
