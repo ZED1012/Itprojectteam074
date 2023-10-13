@@ -61,13 +61,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Question"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/VolPoll_Blue"
                 android:layout_gravity="center"
                 android:paddingHorizontal="20dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:lineSpacingMultiplier="1.15"/>
 
             <TextView
                 android:id="@+id/description"
@@ -167,7 +168,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Next"
+                    android:text="Skip"
                     android:layout_marginStart="16dp"
                     android:backgroundTint="@color/VolPoll_Red" />
             </LinearLayout>

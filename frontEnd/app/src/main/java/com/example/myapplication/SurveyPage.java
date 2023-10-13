@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.myapplication.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -46,6 +44,9 @@ public class SurveyPage extends AppCompatActivity {
 
     private int currentQuestionIndex = 0;
 
+    private Button nextButton;
+    private RadioGroup radioGroup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,18 @@ public class SurveyPage extends AppCompatActivity {
         button5 = findViewById(R.id.button5);
         fieldGroup = findViewById(R.id.fieldGroup);
         description = findViewById(R.id.description);
+
+        nextButton = findViewById(R.id.nextButton);
+        radioGroup = findViewById(R.id.group);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i != -1){
+                    nextButton.setText("Next");
+                }
+            }
+        });
 
         //toolbar
         final ImageButton button = (ImageButton) findViewById(R.id.survey_page_button);
@@ -85,11 +98,11 @@ public class SurveyPage extends AppCompatActivity {
         });
 
 
-        Button NextButton = findViewById(R.id.nextButton);
-        NextButton.setOnClickListener(new View.OnClickListener() {
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RadioGroup radioGroup = findViewById(R.id.group);
+
                 int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
 
                 int answer = -1;
@@ -200,6 +213,7 @@ public class SurveyPage extends AppCompatActivity {
             final String apiDescription = currentQuestion.optString("description");
             final String apiType = currentQuestion.getString("type");
 
+
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -218,12 +232,13 @@ public class SurveyPage extends AppCompatActivity {
                         previousButton.setVisibility(View.VISIBLE);
                     }
 
-                    RadioGroup group = findViewById(R.id.group);
-                    group.clearCheck();
+                    radioGroup.clearCheck();
+                    nextButton.setText("Skip");
                     if ("Intro".equals(apiType)) {
-                        group.setVisibility(View.GONE);
+                        radioGroup.setVisibility(View.GONE);
+                        nextButton.setText("Next");
                     } else {
-                        group.setVisibility(View.VISIBLE);
+                        radioGroup.setVisibility(View.VISIBLE);
                     }
                 }
             });
