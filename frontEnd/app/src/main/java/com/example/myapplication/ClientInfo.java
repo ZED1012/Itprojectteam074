@@ -12,14 +12,14 @@ public class ClientInfo extends Application {
     boolean isClub;
     boolean isOrganisation;
     boolean isLeader;
+    boolean isPeak;
+    String peakSpecify;
     int roleId;
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
 
-    public int getRoleId() {
-        return roleId;
+
+    public String getPeakSpecify() {
+        return peakSpecify;
     }
 
     public void onCreate() {
@@ -33,6 +33,8 @@ public class ClientInfo extends Application {
         isOrganisation = false;
         isLeader = false;
         roleId = 0;
+        isPeak = false;
+        peakSpecify = "";
         super.onCreate();
 
     }
@@ -105,6 +107,26 @@ public class ClientInfo extends Application {
 
     public boolean isLeader() {
         return isLeader;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setPeak(boolean peak) {
+        isPeak = peak;
+    }
+
+    public void setSpecify(String peakSpecify) {
+        this.peakSpecify = peakSpecify;
+    }
+
+    public boolean isPeak() {
+        return isPeak;
     }
 
 
