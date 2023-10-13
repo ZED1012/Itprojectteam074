@@ -48,7 +48,8 @@ public class SurveyPopupPage extends AllPageToolBar {
             @Override
             public void onClick(View v) {
                 personalDetail(client.getFirstName(), client.getLastName(), client.getEmail(),
-                        client.getGroup(), client.getPostCode(), Role(), client.isLeader(), client.getRoleId());
+                        client.getGroup(), client.getPostCode(), Role(), client.isLeader(),
+                        client.getRoleId(),client.getPeakSpecify(),client.isPeak());
 
             }
         });
@@ -71,9 +72,9 @@ public class SurveyPopupPage extends AllPageToolBar {
 
 
 
-
     public void personalDetail(String firstName, String lastName, String email,
-                               String groupName, String postCode, String group, boolean isLeader, int roleId) {
+                               String groupName, String postCode, String group,
+                               boolean isLeader, int roleId, String specify, boolean peak) {
         // Preparing the JSON payload
         String jsonPayload = String.format(
                 "{" +
@@ -83,13 +84,14 @@ public class SurveyPopupPage extends AllPageToolBar {
                         "\"first_name\": \"%s\"," +
                         "\"group_type\": \"%s\"," +
                         "\"last_name\": \"%s\"," +
-                        "\"peak\": true," +
-                        "\"peak_details\": \"\"," +
+                        "\"peak\": %b," +
+                        "\"peak_details\": %s\"\"," +
                         "\"position\": \"%s\"," +
                         "\"postcode\": \"%s\"," +
                         "\"role_id\": %d" +
                         "}",
-                groupName, email, firstName, group, lastName, isLeader ? "leader" : "member", postCode,roleId
+                groupName, email, firstName, group, lastName, peak, specify,
+                isLeader ? "leader" : "member", postCode,roleId
         );
 
         postToBackend("http://hf2019.natapp1.cc/auth/signup", jsonPayload);

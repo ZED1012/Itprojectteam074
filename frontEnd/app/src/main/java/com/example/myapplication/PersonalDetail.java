@@ -212,7 +212,8 @@ public class PersonalDetail extends AppCompatActivity {
         client.setClub(isClub);
         client.setOrganisation(isOrganisation);
         client.setRoleId(role_id);
-
+        client.setPeak(peak);
+        client.setSpecify(specify);
 
         // Preparing the JSON payload
         String jsonPayload = String.format(
@@ -229,17 +230,12 @@ public class PersonalDetail extends AppCompatActivity {
                         "\"postcode\": \"%s\"," +
                         "\"role_id\": %d" +
                         "}",
-                groupName, email, firstName, getGroupType(), lastName, peak, specify, position, postCode, role_id
+                groupName, email, firstName, getGroupType(), lastName,
+                peak, specify, position, postCode, role_id
         );
 
         postToBackend("http://hf2019.natapp1.cc/auth/signup", jsonPayload);
 
-        //transform data
-        /*Intent intent=new Intent(PersonalDetail.this, SurveyPopupPage.class);
-        intent.putExtra("basicDetail", data);
-        intent.putExtra("group", group);
-        intent.putExtra("isLeader", role);
-        startActivity(intent);*/
         return true;
     }
 
