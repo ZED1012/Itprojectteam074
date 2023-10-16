@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ import okhttp3.RequestBody;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.bumptech.glide.Glide;
+
 
 public class SurveyPage extends AppCompatActivity {
 
@@ -46,6 +49,8 @@ public class SurveyPage extends AppCompatActivity {
 
     private Button nextButton;
     private RadioGroup radioGroup;
+
+    private ImageView loadingGif;
 
 
     @Override
@@ -64,6 +69,7 @@ public class SurveyPage extends AppCompatActivity {
 
         nextButton = findViewById(R.id.nextButton);
         radioGroup = findViewById(R.id.group);
+        loadingGif = findViewById(R.id.loading_gif);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -180,6 +186,7 @@ public class SurveyPage extends AppCompatActivity {
                     .post(requestBody)
                     .build();
 
+
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
@@ -213,18 +220,20 @@ public class SurveyPage extends AppCompatActivity {
             final String apiDescription = currentQuestion.optString("description");
             final String apiType = currentQuestion.getString("type");
 
-
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     fieldGroup.setText(apiName);
                     question.setText(apiQuestion);
-                    if (!(apiDescription == "null")) {
+
+                    // Check if description is not "null"
+                    if (!"null".equals(apiDescription)) {
                         description.setText(apiDescription);
                     } else {
                         description.setText("");
                     }
-                    nextButton.setVisibility(View.VISIBLE);
+
+                    // Handle the visibility of the Previous button
                     Button previousButton = findViewById(R.id.previousButton);
                     if (currentQuestionIndex == 0) {
                         previousButton.setVisibility(View.GONE);
@@ -232,14 +241,23 @@ public class SurveyPage extends AppCompatActivity {
                         previousButton.setVisibility(View.VISIBLE);
                     }
 
+                    // Clear radio group selection and set default button text
                     radioGroup.clearCheck();
                     nextButton.setText("Skip");
+
+                    // Hide loading gif now that we are updating the UI
+                    loadingGif.setVisibility(View.GONE);
+
+                    // Check the type of the question to adjust visibility
                     if ("Intro".equals(apiType)) {
                         radioGroup.setVisibility(View.GONE);
                         nextButton.setText("Next");
                     } else {
                         radioGroup.setVisibility(View.VISIBLE);
                     }
+
+                    // Always make sure the Next button is visible after data is loaded
+                    nextButton.setVisibility(View.VISIBLE);
                 }
             });
         } catch (JSONException e) {
@@ -255,9 +273,27 @@ public class SurveyPage extends AppCompatActivity {
                 .get()
                 .build();
 
+
+        Glide.with(SurveyPage.this)
+                .asGif()
+                .load(R.drawable.loading)
+                .centerCrop()
+                .into(loadingGif);
+
+        loadingGif.setVisibility(View.VISIBLE);
+        radioGroup.setVisibility(View.GONE);          // Hide the RadioGroup
+        nextButton.setVisibility(View.GONE);          // Hide the Next button
+        Button previousButton = findViewById(R.id.previousButton);
+        previousButton.setVisibility(View.GONE);      // Hide the Previous button
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingGif.setVisibility(View.GONE);
+                    }
+                });
                 // Handle the error
             }
 
@@ -274,6 +310,12 @@ public class SurveyPage extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingGif.setVisibility(View.GONE);
+                    }
+                });
             }
         });
     }
