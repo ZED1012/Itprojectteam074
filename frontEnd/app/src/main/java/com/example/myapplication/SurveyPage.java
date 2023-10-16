@@ -224,7 +224,7 @@ public class SurveyPage extends AppCompatActivity {
                     } else {
                         description.setText("");
                     }
-
+                    nextButton.setVisibility(View.VISIBLE);
                     Button previousButton = findViewById(R.id.previousButton);
                     if (currentQuestionIndex == 0) {
                         previousButton.setVisibility(View.GONE);
