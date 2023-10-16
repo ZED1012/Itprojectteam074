@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -28,7 +29,10 @@ public class EndSurvey extends AllPageToolBar {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                menuButton.performClick();
+
+                Intent intent = new Intent();
+                intent.setClass(EndSurvey.this, LearnMore.class);
+                startActivity(intent);
             }
         });
 
