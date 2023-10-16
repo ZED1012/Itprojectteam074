@@ -192,11 +192,11 @@ public class SurveyPage extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(SurveyPage.this, "Data fetched successfully", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(SurveyPage.this, "Data fetched successfully", Toast.LENGTH_SHORT).show();
                             }
                         });
                     } else {
-                        Toast.makeText(SurveyPage.this, "Failed to fetch data. Please check your connection.", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SurveyPage.this, "Failed to fetch data. Please check your connection.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
