@@ -52,6 +52,8 @@ public class SurveyPage extends AppCompatActivity {
 
     private ImageView loadingGif;
 
+    private int[] answers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +125,7 @@ public class SurveyPage extends AppCompatActivity {
                 }else if (selectedRadioButtonId == R.id.button5) {
                     answer = 5;
                 }
+                answers[currentQuestionIndex] = answer;
 
 
                 try {
@@ -244,6 +247,11 @@ public class SurveyPage extends AppCompatActivity {
                     // Clear radio group selection and set default button text
                     radioGroup.clearCheck();
                     nextButton.setText("Skip");
+                    int storedAnswer = answers[currentQuestionIndex];
+                    if(storedAnswer != 0) {
+                        RadioButton selectedButton = (RadioButton) radioGroup.getChildAt(storedAnswer - 1);
+                        selectedButton.setChecked(true);
+                    }
 
                     // Hide loading gif now that we are updating the UI
                     loadingGif.setVisibility(View.GONE);
@@ -304,6 +312,7 @@ public class SurveyPage extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(responseData);
                         dataArray = jsonObject.getJSONArray("data");
+                        answers = new int[dataArray.length()];
                         updateUI();
 
                     } catch (JSONException e) {
